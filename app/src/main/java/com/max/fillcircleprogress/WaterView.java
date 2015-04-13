@@ -51,7 +51,7 @@ public class WaterView extends View {
         mPaint.setStrokeWidth(1);
         for (int i = 0; i < sY; i++) {
             canvas.drawLine(radius - (float) Math.sqrt(radius * radius - (radius - i) * (radius - i)) + circleWidth,
-                    radius + (radius - i), radius + (float) Math.sqrt(radius * radius - (radius - i) * (radius - i)), radius + (radius - i), mPaint);
+                    radius + (radius - i) + circleWidth / 2, radius + (float) Math.sqrt(radius * radius - (radius - i) * (radius - i)), radius + (radius - i) + circleWidth / 2, mPaint);
         }
 
     }
