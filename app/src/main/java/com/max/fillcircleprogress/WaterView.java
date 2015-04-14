@@ -10,7 +10,6 @@ import android.view.View;
 
 public class WaterView extends View {
 
-    private RectF rectF;
     private Paint mPaint;
     private int width, height;
     private int circleWidth = 2;
@@ -19,7 +18,7 @@ public class WaterView extends View {
 
     public WaterView(Context context, AttributeSet attrs) {
         super(context, attrs);
-        rectF = new RectF();
+//        rectF = new RectF();
         mPaint = new Paint();
         mPaint.setAntiAlias(true);
     }
@@ -36,8 +35,6 @@ public class WaterView extends View {
         height = getHeight();
         int min = Math.min(width, height);
         width = height = min;
-        rectF.left = rectF.top = circleWidth / 2;
-        rectF.bottom = rectF.right = min - circleWidth;
         mPaint.setStrokeWidth(circleWidth);
         mPaint.setColor(Color.RED);
         mPaint.setStyle(Paint.Style.STROKE);
@@ -50,8 +47,9 @@ public class WaterView extends View {
         mPaint.setColor(Color.BLUE);
         mPaint.setStrokeWidth(1);
         for (int i = 0; i < sY; i++) {
-            canvas.drawLine(radius - (float) Math.sqrt(radius * radius - (radius - i) * (radius - i)) + circleWidth,
-                    radius + (radius - i) + circleWidth / 2, radius + (float) Math.sqrt(radius * radius - (radius - i) * (radius - i)), radius + (radius - i) + circleWidth / 2, mPaint);
+            float temp = radius - circleWidth/2;
+            canvas.drawLine(temp - (float) Math.sqrt(temp * temp - (temp - i) * (temp - i)) + circleWidth,
+                    temp + (temp - i)  + circleWidth , temp + (float) Math.sqrt(temp * temp - (temp - i) * (temp - i))+ circleWidth, temp + (temp - i) + circleWidth , mPaint);
         }
 
     }
